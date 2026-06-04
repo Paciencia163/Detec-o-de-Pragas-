@@ -12,6 +12,11 @@ def login_screen():
       100% { opacity: 1; transform: translateY(0); }
     }
 
+    @keyframes slideInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
     @keyframes shake {
       0% { transform: translateX(0); }
       25% { transform: translateX(-5px); }
@@ -20,36 +25,86 @@ def login_screen():
       100% { transform: translateX(0); }
     }
 
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(64, 145, 108, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(64, 145, 108, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(64, 145, 108, 0); }
+    }
+
+    * {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
     body {
-      background-color: #f0f8ff;
+      background: linear-gradient(135deg, #1e5631 0%, #40916c 50%, #52b788 100%);
+      min-height: 100vh;
+    }
+
+    .login-container {
+      background: white;
+      border-radius: 20px;
+      padding: 50px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      margin: 50px auto;
+      animation: slideInUp 0.8s ease;
     }
 
     .login-title {
         text-align: center;
-        font-size: 45px;
-        color: #2E8B57;
-        margin-bottom: 40px;
+        font-size: 48px;
+        background: linear-gradient(135deg, #1e5631 0%, #40916c 100%);\n        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
         animation: fadeIn 1s ease-in;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .login-subtitle {
+        text-align: center;
+        font-size: 16px;
+        color: #6b7280;
+        margin-bottom: 40px;
+        animation: fadeIn 1.2s ease-in;
     }
 
     .stTextInput > div > div > input {
-        font-size: 20px;
-        padding: 15px;
-        margin-bottom: 15px;
-        width: 100%;
+        font-size: 16px;
+        padding: 16px 20px !important;
+        margin-bottom: 20px !important;
+        border: 2px solid #e5e7eb !important;
+        border-radius: 12px !important;
+        transition: all 0.3s ease !important;
     }
 
-    .stButton button {
-        font-size: 20px;
-        padding: 12px 24px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        transition: background-color 0.3s;
+    .stTextInput > div > div > input:focus {
+        border-color: #40916c !important;
+        box-shadow: 0 0 0 3px rgba(64, 145, 108, 0.1) !important;
     }
-    .stButton button:hover {
-        background-color: #45a049;
+
+    .stButton > button {
+        font-size: 18px;
+        font-weight: 600;
+        padding: 14px 28px !important;
+        background: linear-gradient(135deg, #40916c 0%, #52b788 100%) !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 12px !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        width: 100% !important;
+        box-shadow: 0 8px 20px rgba(64, 145, 108, 0.3) !important;
+    }
+
+    .stButton > button:hover {
+        background: linear-gradient(135deg, #52b788 0%, #74c69d 100%) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 12px 30px rgba(64, 145, 108, 0.4) !important;
+    }
+
+    .stButton > button:active {
+        transform: translateY(0) !important;
     }
 
     .error {
@@ -60,22 +115,63 @@ def login_screen():
         display: flex;
         justify-content: center;
         gap: 20px;
-        margin-bottom: 30px;
-        animation: fadeIn 3s ease;
+        margin-bottom: 40px;
+        animation: fadeIn 1.5s ease;
     }
 
     .agri-images img {
-        width: 150px;
-        height: 150px;
+        width: 140px;
+        height: 140px;
         object-fit: cover;
-        border-radius: 50%;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+
+    .agri-images img:hover {
+        transform: scale(1.05);
+    }
+
+    [role=\"radiogroup\"] {
+        display: flex !important;
+        gap: 15px !important;
+        margin: 25px 0 !important;
+    }
+
+    [role=\"radiogroup\"] > label {
+        flex: 1 !important;
+        padding: 14px 20px !important;
+        border: 2px solid #e5e7eb !important;
+        border-radius: 12px !important;
+        text-align: center !important;
+        transition: all 0.3s ease !important;
+        font-weight: 600 !important;
+        color: #374151 !important;
+        background: #f9fafb !important;
+    }
+
+    [role=\"radiogroup\"] > label:hover {
+        border-color: #40916c !important;
+        background: #f0f9f7 !important;
+    }
+
+    [role=\"radiogroup\"] > label[data-selected=\"true\"] {
+        background: linear-gradient(135deg, #40916c 0%, #52b788 100%) !important;
+        color: white !important;
+        border-color: #40916c !important;
+    }
+
+    .warning-box, .success-box {
+        border-radius: 12px !important;
+        padding: 16px !important;
+        margin: 15px 0 !important;
+        animation: slideInUp 0.5s ease;
     }
     </style>
     """, unsafe_allow_html=True)
 
     # --- Title ---
-    st.markdown("<div class='login-title'>🌾 Bem-vindo ao FarmWise</div>", unsafe_allow_html=True)
+    st.markdown("<div class='login-title'>🌾 Kulima</div>\n<div class='login-subtitle'>Detecção Inteligente de Pragas para Agricultura</div>", unsafe_allow_html=True)
 
     # --- Agriculture Images ---
     st.markdown("""

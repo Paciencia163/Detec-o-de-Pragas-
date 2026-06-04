@@ -20,16 +20,16 @@ if not st.session_state.logged_in:
 model_yolo = load_model_yolo()
 
 # Sidebar
-st.set_page_config(page_title="🌾 FarmWise", layout="wide")
+st.set_page_config(page_title="�️ Kulima", layout="wide")
 # --- Custom Sidebar Styling ---
 st.markdown("""
     <style>
     /* General sidebar styling */
     [data-testid="stSidebar"] {
-        background-color: #f7f7f7;
+        background: linear-gradient(135deg, #1e5631 0%, #2d8659 100%);
         padding: 40px 20px;
-        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
-        border-right: 1px solid #e0e0e0;
+        box-shadow: 8px 0 20px rgba(0, 0, 0, 0.15);
+        border-right: 2px solid #40916c;
     }
 
     /* Sidebar logo */
@@ -42,20 +42,22 @@ st.markdown("""
 
     /* Sidebar title */
     .sidebar-title {
-        font-size: 28px;
-        font-weight: 600;
-        color: #388e3c;
+        font-size: 32px;
+        font-weight: 700;
+        color: #ffffff;
         text-align: center;
         margin-bottom: 15px;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     /* Sidebar subtitle */
     .sidebar-subtitle {
         font-size: 14px;
         text-align: center;
-        color: #757575;
+        color: #d4f1d4;
         margin-bottom: 30px;
+        font-weight: 500;
     }
 
     /* Radio buttons */
@@ -65,57 +67,65 @@ st.markdown("""
 
     div[role="radiogroup"] > label {
         font-size: 16px;
-        padding: 12px;
-        margin: 6px 0;
-        border-radius: 8px;
-        color: #444;
-        background-color: #e8f5e9;
-        transition: all 0.3s ease;
+        padding: 14px 18px;
+        margin: 8px 0;
+        border-radius: 12px;
+        color: #1e5631;
+        background-color: rgba(255, 255, 255, 0.15);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
         display: block;
         text-align: center;
-        border: 1px solid transparent;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        font-weight: 500;
+        color: #ffffff;
     }
 
     div[role="radiogroup"] > label:hover {
-        background-color: #c8e6c9;
-        transform: translateY(-2px);
+        background-color: rgba(255, 255, 255, 0.25);
+        transform: translateY(-3px);
+        border-color: rgba(255, 255, 255, 0.5);
     }
 
     div[role="radiogroup"] > label[data-selected="true"] {
-        background-color: #81c784;
+        background: linear-gradient(135deg, #40916c 0%, #52b788 100%);
         color: white;
         font-weight: 700;
-        border: 1px solid #388e3c;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        border: 2px solid #52b788;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
     }
 
     /* Button styling */
     .stButton > button {
-        background-color: #388e3c;
+        background: linear-gradient(135deg, #40916c 0%, #52b788 100%);
         color: white;
         font-size: 16px;
-        padding: 12px 25px;
+        font-weight: 600;
+        padding: 14px 28px;
         border: none;
-        border-radius: 30px;
+        border-radius: 10px;
         width: 100%;
-        transition: background-color 0.3s, transform 0.2s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         margin-top: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .stButton > button:hover {
-        background-color: #2c6e1f;
-        transform: scale(1.05);
+        background: linear-gradient(135deg, #52b788 0%, #74c69d 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
 
     /* Logout button styling */
     .stButton > button.logout {
-        background-color: #f44336;
+        background: linear-gradient(135deg, #d62828 0%, #f77f00 100%);
+        box-shadow: 0 4px 12px rgba(214, 40, 40, 0.3);
     }
 
     .stButton > button.logout:hover {
-        background-color: #d32f2f;
-        transform: scale(1.05);
+        background: linear-gradient(135deg, #f77f00 0%, #fcbf49 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(214, 40, 40, 0.4);
     }
 
     </style>
@@ -123,9 +133,9 @@ st.markdown("""
 
 
 
-st.sidebar.image("https://cdn-icons-png.freepik.com/512/1886/1886966.png", width=100)
-st.sidebar.title("🌾 FarmWise")
-st.sidebar.markdown("Detecção Inteligente para Agricultores")
+st.sidebar.markdown("<h1 style='text-align: center; color: white; margin-bottom: 10px;'>🏔️ Kulima</h1>", unsafe_allow_html=True)
+st.sidebar.markdown("<p style='text-align: center; color: #d4f1d4; font-size: 14px; font-weight: 500;'>Detecção Inteligente de Pragas</p>", unsafe_allow_html=True)
+st.sidebar.markdown("<hr style='border: 1px solid rgba(255,255,255,0.2); margin: 20px 0;'>", unsafe_allow_html=True)
 
 if st.sidebar.button("🚪 Sair"):
     st.session_state.logged_in = False
